@@ -12,7 +12,7 @@ public class Company {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "company")
+    @ManyToMany(mappedBy = "company", cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private Set<Contract> contracts = new HashSet<>();
 
     public Company() {

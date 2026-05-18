@@ -11,7 +11,12 @@ public class Person {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "person")
+    @ManyToMany
+    @JoinTable(
+        name = "person_company",
+        joinColumns = @JoinColumn(name = "person_id"),
+        inverseJoinColumns = @JoinColumn(name = "company_id")
+    )
     private Set<Contract> contracts = new HashSet<>();
 
     public Person() {
